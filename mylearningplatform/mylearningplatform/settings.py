@@ -74,9 +74,13 @@ WSGI_APPLICATION = "mylearningplatform.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mylearningplatform_db',
+        'USER': 'postgres',  # Likely 'postgres' or another user you've created
+        'PASSWORD': 'abhi05rox',  # The password you set during installation
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
