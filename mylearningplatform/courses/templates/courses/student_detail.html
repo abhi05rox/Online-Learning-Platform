@@ -1,0 +1,18 @@
+<h1>{{ student.first_name }} {{ student.last_name }}</h1>
+<p>Email: {{ student.email }}</p>
+
+<h2>Enrolled Courses</h2>
+<ul>
+    {% for enrollment in enrollments %}
+        <li>
+            <a href="{% url 'lesson-content' enrollment.course.pk %}">
+                {{ enrollment.course.title }}
+            </a>
+            - Progress: {{ enrollment.progress }}%
+        </li>
+    {% empty %}
+        <li>No enrolled courses for this student.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'course-catalog' %}">Back to Course Catalog</a>

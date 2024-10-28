@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ course.title }} - Lessons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        ul li h3 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        ul li p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        ul li:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ course.title }}</h1>
+        <p>{{ course.description }}</p>
+
+        <h2>Lessons</h2>
+        <ul>
+            {% for lesson in lessons %}
+                <li>
+                    <h3>{{ lesson.title }}</h3>
+                    <p>{{ lesson.content }}</p>
+                </li>
+            {% empty %}
+                <li>No lessons available for this course.</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'course-catalog' %}" class="back-link">Back to Course Catalog</a>
+    </div>
+</body>
+</html>
+
+<h1>{{ course.title }}</h1>
+<p>{{ course.description }}</p>
+
+{% comment %} <h2>Lessons</h2>
+<ul>
+    {% for lesson in lessons %}
+        <li>
+            <h3>{{ lesson.title }}</h3>
+            <p>{{ lesson.content }}</p>
+        </li>
+    {% empty %}
+        <li>No lessons available for this course.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'course-catalog' %}">Back to Course Catalog</a> {% endcomment %}

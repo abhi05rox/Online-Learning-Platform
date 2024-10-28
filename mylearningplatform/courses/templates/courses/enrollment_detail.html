@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        .back-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-links a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-links a:hover {
+            background-color: #0056b3;
+        }
+
+        .enrollment-info {
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enrollment Details</h1>
+
+        <div class="enrollment-info">
+            <p><strong>Student:</strong> {{ enrollment.student.first_name }} {{ enrollment.student.last_name }}</p>
+            <p><strong>Course:</strong> {{ enrollment.course.title }}</p>
+            <p><strong>Progress:</strong> {{ enrollment.progress }}%</p>
+            <p><strong>Enrolled At:</strong> {{ enrollment.enrolled_at|date:"Y-m-d H:i:s" }}</p>
+        </div>
+
+        <div class="back-links">
+            <a href="{% url 'student-detail' enrollment.student.pk %}">Back to Student Profile</a>
+            <a href="{% url 'course-catalog' %}">Back to Course Catalog</a>
+        </div>
+    </div>
+</body>
+</html>
+
+{% comment %} <h1>Enrollment Details</h1>
+
+<p><strong>Student:</strong> {{ enrollment.student.first_name }} {{ enrollment.student.last_name }}</p>
+<p><strong>Course:</strong> {{ enrollment.course.title }}</p>
+<p><strong>Progress:</strong> {{ enrollment.progress }}%</p>
+<p><strong>Enrolled At:</strong> {{ enrollment.enrolled_at|date:"Y-m-d H:i:s" }}</p>
+
+<a href="{% url 'student-detail' enrollment.student.pk %}">Back to Student Profile</a>
+<a href="{% url 'course-catalog' %}">Back to Course Catalog</a> {% endcomment %}

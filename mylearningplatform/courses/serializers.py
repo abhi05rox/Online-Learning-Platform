@@ -34,27 +34,6 @@ class EnrollmentSerializer(serializers.ModelSerializer):
         return obj.enrolled_at.strftime('%Y-%m-%d %H:%M:%S')
     
 
-# class EnrollmentSerializer(serializers.ModelSerializer):
-#     student = serializers.SerializerMethodField()
-#     course = serializers.SerializerMethodField()
-#     enrolled_at = serializers.SerializerMethodField()  # Custom method for formatting datetime
-
-#     class Meta:
-#         model = Enrollment
-#         fields = ['id', 'student', 'course', 'progress', 'enrolled_at']
-
-#     def get_student(self, obj):
-#         return f"{obj.student.first_name} {obj.student.last_name}"
-
-#     def get_course(self, obj):
-#         return obj.course.title
-
-#     def get_enrolled_at(self, obj):
-#         # Format the date to 'YYYY-MM-DD' and time to 'HH:MM:SS'
-#         return obj.enrolled_at.strftime('%Y-%m-%d %H:%M:%S')
-
-
-
 class LessonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lesson
